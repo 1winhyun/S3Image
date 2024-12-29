@@ -40,6 +40,7 @@ public class Post {
     private String content;
 
     @OneToMany(mappedBy = "post",fetch = FetchType.LAZY,orphanRemoval = true,cascade = CascadeType.ALL)
+    @Builder.Default
     private List<Image>images=new ArrayList<>();
 
     public void addImage(List<Image> images){
