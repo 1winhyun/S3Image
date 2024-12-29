@@ -39,7 +39,7 @@ public class PostService {
     public List<PostResponseDTO>findAllPosts(){
         List<Post>posts=postRepository.findAll()
                 .stream()
-                .collect(Collectors.toList());
+                .toList();
 
         return posts.stream()
                 .map(PostResponseDTO::from)
