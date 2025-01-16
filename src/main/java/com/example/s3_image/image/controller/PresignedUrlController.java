@@ -19,7 +19,6 @@ public class PresignedUrlController {
     @PostMapping("/presignedurl")
     public ResponseEntity<PresignedUrlResponse> getPresignedUrl(@RequestBody PresignedUrlRequest presignedUrlRequest){
         PresignedUrlResponse presignedUrlResponse=presignedUrlService.getPreSignedUrl(
-                presignedUrlRequest.getPrefix(),
                 presignedUrlRequest.getImageName()
         );
         return ResponseEntity.ok(presignedUrlResponse);

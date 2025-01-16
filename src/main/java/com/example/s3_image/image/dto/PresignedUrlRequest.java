@@ -8,6 +8,5 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 public class PresignedUrlRequest {
-    private String prefix;
     private String imageName;
 }

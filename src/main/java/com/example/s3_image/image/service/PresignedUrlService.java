@@ -28,8 +28,8 @@ public class PresignedUrlService {
     private String region;
 
     @Transactional
-    public PresignedUrlResponse getPreSignedUrl(String prefix, String originalFilename) {
-        String fileName = createPath(prefix, originalFilename);
+    public PresignedUrlResponse getPreSignedUrl(String originalFilename) {
+        String fileName = createPath(originalFilename);
         GeneratePresignedUrlRequest generatePresignedUrlRequest = getGeneratePreSignedUrlRequest(bucketName, fileName);
         URL presignedUrl = amazonS3.generatePresignedUrl(generatePresignedUrlRequest);
 
@@ -57,9 +57,9 @@ public class PresignedUrlService {
         return UUID.randomUUID().toString();
     }
 
-    private String createPath(String prefix, String fileName) {
+    private String createPath(String fileName) {
         String fileId = createFileId();
-        return String.format("%s/%s", prefix, fileId + fileName);
+        return String.format("%s", fileId + fileName);
     }
 
     private String generateFileAccessUrl(String fileName) {
